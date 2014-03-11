@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "/home/prajmus/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# nm-applet &
+#fbsetbg -f /home/prajmus/Pictures/wallpaper.jpg
+#exec bash /home/prajmus/bin/mouseaccel.sh
+#exec bash /home/prajmus/.screenlayout/onescreen.sh
+#exec /home/prajmus/.start_conky &
+#exec python dbcli.py status &
+#exec /usr/bin/numlockx on
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+fluxbox &
+fbpid=$!
+
+sleep 1
+{
+  xinput set-prop pointer:'Kingsis Peripherals ZOWIE Gaming mouse' 'Device Accel Profile' -1
+  xinput set-prop pointer:'Kingsis Peripherals ZOWIE Gaming mouse' 'Device Accel Constant Deceleration' 2
+  xinput set-prop pointer:'Kingsis Peripherals ZOWIE Gaming mouse' 'Device Accel Velocity Scaling' 1
+  xrandr --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS1 --off --output DP1 --off --output VGA1 --off
+  conky &
+  xmodmap -e "remove Lock = Caps_Lock"
+  xmodmap -e "keycode 66 = "
+  xmodmap -e "keycode 66 = Control_L"
+  terminator &
+  fbsetbg -f /home/prajmus/Pictures/wallpaper.jpg
+}&
+
+wait $fbpid
+# or if you want to keep a log:
+# exec fluxbox -log "/home/prajmus/.fluxbox/log"

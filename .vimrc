@@ -27,7 +27,7 @@ set timeoutlen=150
 " vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme='dark'
+let g:airline_theme='powerlineish'
 
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
@@ -38,7 +38,7 @@ set comments=sl:/*,mb:\ *,elx:\ */
 
 set number
 set smarttab
-colorscheme default
+colorscheme slate
 
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
@@ -119,3 +119,6 @@ let g:netrw_altv = 1
 set autochdir
 
 let g:netrw_winsize = 20
+
+" Remove trailing whitespaces
+autocmd FileType c,cpp autocmd BufWritePre <buffer> :%s/\s\+$//e

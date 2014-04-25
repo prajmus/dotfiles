@@ -49,6 +49,14 @@ inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 inoremap {}     {}
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
+inoremap (  ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O 
+inoremap () ()
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+" Esc binds
 inoremap jj     <Esc>A;<Esc>
 inoremap jk     <Esc>
 
@@ -61,9 +69,6 @@ nnoremap <C-l> <C-w>l
 " sane search
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
-
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 
 nnoremap th :tabfirst<CR>
 nnoremap tj :tabnext<CR>
@@ -114,11 +119,12 @@ map <silent> <C-E> :call ToggleVExplorer()<CR>
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-" Change directory to the current buffer when opening files.
-set autochdir
-
 let g:netrw_winsize = 20
 
 " Remove trailing whitespaces
 autocmd FileType c,cpp autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
+" tags support
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.h set omnifunc=omni#cpp#complete#Main
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>

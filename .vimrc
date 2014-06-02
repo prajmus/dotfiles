@@ -1,5 +1,7 @@
 " set 265 colours
 set t_Co=256
+set exrc
+set secure
 
 " set UTF-8 encoding
 set enc=utf-8
@@ -9,6 +11,7 @@ set termencoding=utf-8
 " disable vi compability
 set nocompatible
 
+"
 syntax on
 set mouse=a
 set showmatch
@@ -22,7 +25,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noswapfile
+
+" timeout for commands
 set timeoutlen=150
+
+" tabs
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 
 " vim-airline
 set laststatus=2
@@ -32,16 +41,35 @@ let g:airline_theme='powerlineish'
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 
+" too long column
 set textwidth=120
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%121v', 100)
 
 set comments=sl:/*,mb:\ *,elx:\ */
+
+" search
+nnoremap <silent> n n:call HLNext(0.5)<CR>
+nnoremap <silent> N N:call HLNext(0.5)<CR>
+
+function! HLNext (blinktime)
+    "highlight WhiteOnRed ctermfg=white ctermbg=red
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    let target_pat = '\c\%#'.@/
+    let ring = matchadd('WhiteOnRed', target_pat, 101)
+    redraw
+    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+    call matchdelete(ring)
+    redraw
+endfunction
 
 set number
 set smarttab
 colorscheme slate
 
-nmap <F2> :w<CR>
-imap <F2> <ESC>:w<CR>i
+nmap <F2> ;w<CR>
+imap <F2> <ESC>;w<CR>i
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>
 
@@ -65,16 +93,24 @@ nnoremap <silent> N Nzz
 inoremap        (  ()<Left>
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 
-nnoremap th :tabfirst<CR>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprev<CR>
-nnoremap tl :tablast<CR>
-nnoremap tt :tabedit<Space>
-nnoremap tn :tabnew<CR>
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
+" working with tabs
+nnoremap th ;tabfirst<CR>
+nnoremap tj ;tabnext<CR>
+nnoremap tk ;tabprev<CR>
+nnoremap tl ;tablast<CR>
+nnoremap tt ;tabedit<Space>
+nnoremap tn ;tabnew<CR>
 vnoremap < <gv  
 vnoremap > >gv 
 
+" switch : and ;
+nnoremap ; :
+nnoremap : ;
+
 set iskeyword-=_
+set iskeyword+=:
 imap <A-Space> <Esc>
 
 set nocp
@@ -116,9 +152,9 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 
 " Change directory to the current buffer when opening files.
-set autochdir
+" set autochdir
 
 let g:netrw_winsize = 20
 
-" Remove trailing whitespaces
-autocmd FileType c,cpp autocmd BufWritePre <buffer> :%s/\s\+$//e
+let g:tex_flavor='latex'
+autocmd FileType c,cpp autocmd BufWritePre <buffer> ;%s/\s\+$//e

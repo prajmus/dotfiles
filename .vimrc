@@ -77,6 +77,14 @@ inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 inoremap {}     {}
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
+inoremap (  ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O 
+inoremap () ()
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+" Esc binds
 inoremap jj     <Esc>A;<Esc>
 inoremap jk     <Esc>
 
@@ -102,8 +110,8 @@ nnoremap tk ;tabprev<CR>
 nnoremap tl ;tablast<CR>
 nnoremap tt ;tabedit<Space>
 nnoremap tn ;tabnew<CR>
-vnoremap < <gv  
-vnoremap > >gv 
+vnoremap < <gv
+vnoremap > >gv
 
 " switch : and ;
 nnoremap ; :
@@ -158,3 +166,7 @@ let g:netrw_winsize = 20
 
 let g:tex_flavor='latex'
 autocmd FileType c,cpp autocmd BufWritePre <buffer> ;%s/\s\+$//e
+
+" tags support
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.h set omnifunc=omni#cpp#complete#Main
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>

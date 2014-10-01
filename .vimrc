@@ -41,9 +41,11 @@ let g:airline_theme='powerlineish'
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 
+colorscheme jellybeans
+
 " too long column
 set textwidth=120
-highlight ColorColumn ctermbg=magenta
+highlight ColorColumn ctermbg=Yellow
 call matchadd('ColorColumn', '\%121v', 100)
 
 set comments=sl:/*,mb:\ *,elx:\ */
@@ -66,7 +68,6 @@ endfunction
 
 set number
 set smarttab
-colorscheme slate
 
 nmap <F2> ;w<CR>
 imap <F2> <ESC>;w<CR>i

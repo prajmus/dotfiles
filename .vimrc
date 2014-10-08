@@ -41,6 +41,8 @@ let g:airline_theme='powerlineish'
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 
+let mapleader=","
+
 colorscheme jellybeans
 
 " too long column
@@ -98,6 +100,8 @@ nnoremap <C-l> <C-w>l
 " sane search
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
+vnoremap <silent> n nzz
+vnoremap <silent> N Nzz
 
 inoremap        (  ()<Left>
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
@@ -134,27 +138,6 @@ execute pathogen#helptags()
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler = '-std=c++11'
 
-" Toggle Vexplore with Ctrl-E
-function! ToggleVExplorer()
- if exists("t:expl_buf_num")
-     let expl_win_num = bufwinnr(t:expl_buf_num)
-     if expl_win_num != -1
-         let cur_win_nr = winnr()
-         exec expl_win_num . 'wincmd w'
-         close
-         exec cur_win_nr . 'wincmd w'
-         unlet t:expl_buf_num
-     else
-         unlet t:expl_buf_num
-     endif
- else
-     exec '1wincmd w'
-     Vexplore
-     let t:expl_buf_num = bufnr("%")
- endif
-endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
-
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
@@ -171,3 +154,13 @@ autocmd FileType c,cpp autocmd BufWritePre <buffer> ;%s/\s\+$//e
 " tags support
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.h set omnifunc=omni#cpp#complete#Main
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
+map <Leader>e ;MBEOpen<CR>
+map <Leader>c ;MBEClose<CR>
+map <Leader>t ;MBEToggle<CR>
+noremap <C-Tab> ;MBEbn<CR>
+noremap <C-S-Tab> ;MBEbp<CR>

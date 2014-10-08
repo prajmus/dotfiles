@@ -1,0 +1,42 @@
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[core]
+    excludesfile = ~/.gitignore_global
+	editor = vim
+	pager = less -FXR
+[alias]
+    co = checkout
+    d = diff
+    s = status -s
+    st = status
+    cp = cherry-pick
+    br = branch
+    l = log
+    lo = log --oneline
+    pushtogerrit = push origin HEAD:refs/for/master
+	slog = log --oneline
+	dt = difftool
+[diff]
+    renames = true
+    renameLimit = 50000
+	tool = vimdiff
+[gui]
+    fontdiff = -family Courier -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+    commitmsgwidth = 80
+[user]
+	name = Jakub Borowski\n
+	email =
+[push]
+	default = simple
+[color "diff"]
+	whitespace = red reverse
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false

@@ -58,3 +58,7 @@ setopt no_sharehistory
 bindkey -M viins 'jk' vi-cmd-mode
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/qt/5.1.1/gcc_64/bin/:/usr/local/java/bin
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.4/site-packages/
+
+export P4PORT=106.120.130.174:1888
+export P4USER=j.borowski
+export P4CLIENT=DEV-TTWCUV_elm-j.borowski

@@ -36,14 +36,16 @@ set list
 " vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='sol'
 
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 
 let mapleader=","
 
-colorscheme jellybeans
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme default
 
 " too long column
 set textwidth=120

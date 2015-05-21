@@ -52,7 +52,7 @@ alias grepr='grep -rni'
 alias poweroff='sudo shutdown -h now'
 alias reboot='sudo shutdown -r now'
 alias grepc='grep -rn'
-alias chef='g++ -o bin --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
+alias chef='g++ -o a.out --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
 alias v='vim'
 setopt no_sharehistory
 bindkey -M viins 'jk' vi-cmd-mode

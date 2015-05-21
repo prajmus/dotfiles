@@ -21,9 +21,9 @@ set winaltkeys=no
 set autoindent
 set cindent
 set backspace=2
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=8
+set shiftwidth=8
+"set expandtab
 set noswapfile
 
 " timeout for commands
@@ -45,7 +45,6 @@ let mapleader=","
 
 let g:molokai_original = 1
 let g:rehash256 = 1
-colorscheme default
 
 " too long column
 set textwidth=120
@@ -74,7 +73,7 @@ set number
 set smarttab
 
 nmap <F2> ;w<CR>
-imap <F2> <ESC>;w<CR>i
+imap <F2> <ESC>;w<CR>a
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>
 
@@ -166,3 +165,6 @@ map <Leader>c ;MBEClose<CR>
 map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
+
+colorscheme gruvbox
+set background=dark

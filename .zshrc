@@ -54,6 +54,9 @@ alias reboot='sudo shutdown -r now'
 alias grepc='grep -rn'
 alias chef='g++ -o a.out --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
 alias v='vim'
+unalias gbs
+unalias gdt
+alias gdt='git difftool'
 setopt no_sharehistory
 bindkey -M viins 'jk' vi-cmd-mode
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/qt/5.1.1/gcc_64/bin/:/usr/local/java/bin

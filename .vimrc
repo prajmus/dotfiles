@@ -1,4 +1,23 @@
 " set 265 colours
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'bling/vim-airline'
+Bundle 'morhetz/gruvbox'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'ervandew/supertab'
+Bundle 'jiangmiao/auto-pairs'
+
+filetype plugin indent on
+
 set t_Co=256
 set exrc
 set secure
@@ -8,16 +27,13 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
-" disable vi compability
-set nocompatible
-
-"
 syntax on
-set mouse=a
+"set mouse=a
 set showmatch
+set title
 
 set winaltkeys=no
-
+set nowrap
 set autoindent
 set cindent
 set backspace=2
@@ -25,6 +41,8 @@ set tabstop=8
 set shiftwidth=8
 "set expandtab
 set noswapfile
+set nobackup
+set shell=/bin/zsh
 
 " timeout for commands
 set timeoutlen=150
@@ -37,14 +55,12 @@ set list
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
+let g:airline#extensions#branch#enabled = 1
 
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 
 let mapleader=","
-
-let g:molokai_original = 1
-let g:rehash256 = 1
 
 " too long column
 set textwidth=120
@@ -71,6 +87,8 @@ endfunction
 
 set number
 set smarttab
+
+map <Leader>o ;NERDTreeToggle<CR>
 
 nmap <F2> ;w<CR>
 imap <F2> <ESC>;w<CR>a
@@ -104,11 +122,6 @@ nnoremap <silent> N Nzz
 vnoremap <silent> n nzz
 vnoremap <silent> N Nzz
 
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-
 " working with tabs
 nnoremap th ;tabfirst<CR>
 nnoremap tj ;tabnext<CR>
@@ -118,6 +131,7 @@ nnoremap tt ;tabedit<Space>
 nnoremap tn ;tabnew<CR>
 vnoremap < <gv
 vnoremap > >gv
+cmap w!! w !sudo tee % >/dev/null
 
 " switch : and ;
 nnoremap ; :
@@ -134,20 +148,8 @@ set hlsearch
 set ignorecase
 set incsearch
 
-execute pathogen#infect()
-execute pathogen#helptags()
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler = '-std=c++11'
-
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-
-" Change directory to the current buffer when opening files.
-" set autochdir
-
-let g:netrw_winsize = 20
 
 let g:tex_flavor='latex'
 autocmd FileType c,cpp autocmd BufWritePre <buffer> ;%s/\s\+$//e
@@ -168,3 +170,6 @@ noremap <C-S-Tab> ;MBEbp<CR>
 
 colorscheme gruvbox
 set background=dark
+
+set visualbell t_vb=
+set novisualbell

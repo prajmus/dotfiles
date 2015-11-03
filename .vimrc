@@ -28,7 +28,7 @@ set fenc=utf-8
 set termencoding=utf-8
 
 syntax on
-"set mouse=a
+set mouse=a
 set showmatch
 set title
 
@@ -37,9 +37,9 @@ set nowrap
 set autoindent
 set cindent
 set backspace=2
-set tabstop=8
-set shiftwidth=8
-"set expandtab
+set tabstop=4
+set shiftwidth=4
+set expandtab
 set noswapfile
 set nobackup
 set shell=/bin/zsh
@@ -102,7 +102,7 @@ inoremap {}     {}
 inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 
 inoremap (  ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O 
+inoremap (<CR>  (<CR>)<Esc>O
 inoremap () ()
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 

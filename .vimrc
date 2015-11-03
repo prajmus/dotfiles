@@ -15,6 +15,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'ervandew/supertab'
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -173,3 +175,5 @@ set background=dark
 
 set visualbell t_vb=
 set novisualbell
+
+command! Fjson %!python -m json.tool

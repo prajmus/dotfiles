@@ -61,6 +61,8 @@ let g:airline#extensions#branch#enabled = 1
 
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
+let g:syntastic_check_on_open = 1
+let g:syntastic_python_checkers = ["pep8", "pylint", "python"]
 
 let mapleader=","
 

@@ -21,3 +21,5 @@ do
     echo "Create symlink to $file"
     ln -s $dir/.$p ~/.$p
 done
+
+sudo ln -s $dir/cellepathy /usr/local/bin/cellepathy

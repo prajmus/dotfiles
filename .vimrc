@@ -17,12 +17,27 @@ Bundle 'ervandew/supertab'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tmhedberg/SimpylFold'
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'nvie/vim-flake8'
 
 filetype plugin indent on
 
 set t_Co=256
 set exrc
 set secure
+set lazyredraw
+set cursorline
+set foldmethod=indent
+set foldlevel=99
+
+let python_highlight_all=1
+let g:SimplyFold_docstring_preview=1
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+nnoremap <space> za
 
 " set UTF-8 encoding
 set enc=utf-8
@@ -40,6 +55,7 @@ set autoindent
 set cindent
 set backspace=2
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set noswapfile
@@ -67,9 +83,9 @@ let g:syntastic_python_checkers = ["pep8", "pylint", "python"]
 let mapleader=","
 
 " too long column
-set textwidth=120
-highlight ColorColumn ctermbg=Yellow
-call matchadd('ColorColumn', '\%121v', 100)
+set textwidth=100
+highlight ColorColumn ctermbg=red
+set colorcolumn=101
 
 set comments=sl:/*,mb:\ *,elx:\ */
 
@@ -155,7 +171,6 @@ set incsearch
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler = '-std=c++11'
 
-let g:tex_flavor='latex'
 autocmd FileType c,cpp autocmd BufWritePre <buffer> ;%s/\s\+$//e
 
 " tags support

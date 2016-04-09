@@ -65,5 +65,6 @@ alias gfx_off='sudo tee /proc/acpi/bbswitch <<<OFF'
 alias gfx_on='sudo tee /proc/acpi/bbswitch <<<ON'
 setopt no_sharehistory
 bindkey -M viins 'jk' vi-cmd-mode
-export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/qt/5.1.1/gcc_64/bin/:/usr/local/java/bin
+export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/qt/5.1.1/gcc_64/bin/:/usr/local/java/bin:/home/prajmus/.local/bin:/home/prajmus/Downloads/gradle/bin
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.4/site-packages/
+export PYTHONPATH=$PYTHONPATH:/home/prajmus/.local/lib/python2.7/site-packages/

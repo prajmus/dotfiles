@@ -21,6 +21,9 @@ Bundle 'tmhedberg/SimpylFold'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'nvie/vim-flake8'
+Bundle 'vim-airline/vim-airline-themes'
+Bundle 'hdima/python-syntax'
+Bundle 'endel/vim-github-colorscheme'
 
 filetype plugin indent on
 
@@ -32,12 +35,14 @@ set cursorline
 set foldmethod=indent
 set foldlevel=99
 
-let python_highlight_all=1
+let python_version_2=1
 let g:SimplyFold_docstring_preview=1
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 nnoremap <space> za
+
+set splitright
 
 " set UTF-8 encoding
 set enc=utf-8
@@ -187,8 +192,10 @@ map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
 
-colorscheme gruvbox
-set background=dark
+colorscheme github
+set background=light
+
+let python_highlight_all=1
 
 set visualbell t_vb=
 set novisualbell

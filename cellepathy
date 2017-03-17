@@ -5,13 +5,13 @@ cd /home/prajmus/Cellepathy/gerrit/KnoGo
 tmux start-server
 tmux new-session -d -s 'cellepathy'
 tmux rename-window 'code'
+tmux new-window -n 'code2' -c '/home/prajmus/Cellepathy/gerrit/KnoGo'
 tmux new-window -n 'git' -c '/home/prajmus/Cellepathy/gerrit/KnoGo'
-tmux new-window -n 'gradle' -c '/home/prajmus/Cellepathy/gerrit/KnoGo-Client-Java'
-tmux new-window -n 'vim' -c '/home/prajmus/Cellepathy/'
+tmux new-window -n 'vim' -c '/home/prajmus/Cellepathy/gerrit/KnoGo'
 tmux new-window -n 'django' -c '/home/prajmus/Cellepathy/gerrit/KnoGo'
 tmux new-window -n 'htop'
 
-tmux send-keys -t 'code' 'cell; clear' C-m
+tmux send-keys -t 'code' 'cd /home/prajmus/Cellepathy/gerrit/KnoGo; clear' C-m
 tmux send-keys -t 'htop' 'htop' C-m
 
 tmux select-window -t 'code'

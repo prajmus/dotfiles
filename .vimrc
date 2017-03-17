@@ -24,6 +24,8 @@ Bundle 'nvie/vim-flake8'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'hdima/python-syntax'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tomasr/molokai'
 
 filetype plugin indent on
 
@@ -192,8 +194,8 @@ map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
 
-colorscheme github
-set background=light
+colorscheme molokai
+set background=dark
 
 let python_highlight_all=1
 
@@ -201,3 +203,7 @@ set visualbell t_vb=
 set novisualbell
 
 command! Fjson %!python -m json.tool
+
+set wildignore+=*.pyc
+
+let g:molokai_original = 1

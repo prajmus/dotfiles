@@ -43,7 +43,6 @@ DEFAULT_USER=`whoami`
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git vi-mode)
 
-eval `dircolors ~/.dircolors`
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 # Customize to your needs...
@@ -53,7 +52,7 @@ alias poweroff='sudo shutdown -h now'
 alias reboot='sudo shutdown -r now'
 alias grepc='grep -rn'
 alias chef='g++ -o a.out --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
-alias v='vim'
+alias v='vim.gtk-py2'
 alias cell='cd ~/Cellepathy/gerrit'
 alias tmux='tmux -2'
 unalias gbs

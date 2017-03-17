@@ -11,7 +11,7 @@ tmux new-window -n 'server' -c '/home/prajmus/mts/server'
 tmux new-window -n 'htop'
 
 tmux send-keys -t 'code' 'cd /home/prajmus/mts/server; clear' C-m
-tmux send-keys -t 'htop 'htop' C-m
+tmux send-keys -t 'htop' 'htop' C-m
 
 tmux select-window -t 'code'
 

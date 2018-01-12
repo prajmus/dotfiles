@@ -3,29 +3,49 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim')
+    set rtp+=~/.vim/bundle/Vundle.vim
+    Bundle 'gmarik/vundle'
+    Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+    Bundle 'bling/vim-airline'
+    Bundle 'morhetz/gruvbox'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'myusuf3/numbers.vim'
+    Bundle 'ervandew/supertab'
+    Bundle 'jiangmiao/auto-pairs'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'tmhedberg/SimpylFold'
+    Bundle 'vim-scripts/indentpython.vim'
+    Bundle 'Valloric/YouCompleteMe'
+    Bundle 'nvie/vim-flake8'
+    Bundle 'vim-airline/vim-airline-themes'
+    Bundle 'hdima/python-syntax'
+    Bundle 'endel/vim-github-colorscheme'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'tomasr/molokai'
+    call vundle#rc()
+elseif has('nvim')
+    call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'tomasr/molokai'
+    Plug 'zchee/deoplete-jedi'
+    Plug 'w0rp/ale'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'hdima/python-syntax'
+    Plug 'nvie/vim-flake8'
+    Plug 'myusuf3/numbers.vim'
+    Plug 'bling/vim-airline'
+    Plug 'tpope/vim-fugitive'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-scripts/indentpython.vim'
+    Plug 'airblade/vim-gitgutter'
+    call plug#end()
+    set rtp+=~/.local/share/nvim/plugged/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
-Bundle 'gmarik/vundle'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'bling/vim-airline'
-Bundle 'morhetz/gruvbox'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'ervandew/supertab'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tmhedberg/SimpylFold'
-Bundle 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'nvie/vim-flake8'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'hdima/python-syntax'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tomasr/molokai'
+endif
 
 filetype plugin indent on
 
@@ -37,7 +57,6 @@ set cursorline
 set foldmethod=indent
 set foldlevel=99
 
-let python_version_2=1
 let g:SimplyFold_docstring_preview=1
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -78,6 +97,7 @@ set list
 
 " vim-airline
 set laststatus=2
+let g:powerline_pycmd='py3'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
 let g:airline#extensions#branch#enabled = 1
@@ -86,6 +106,9 @@ let g:airline#extensions#branch#enabled = 1
 let g:syntastic_cpp_checkers = ['cppcheck']
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ["pep8", "pylint", "python"]
+let g:syntastic_python_pylint_exe = 'python -m pylint'
+let g:syntastic_python_pylint_args = '--rcfile=/home/prajmus/.pylintrc'
+let g:syntastic_python_pep8_args = '--max-line-length=100'
 
 let mapleader=","
 
@@ -164,8 +187,6 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap ; :
 nnoremap : ;
 
-set iskeyword-=_
-set iskeyword+=:
 imap <A-Space> <Esc>
 
 set nocp
@@ -185,7 +206,9 @@ au BufNewFile,BufRead,BufEnter *.cpp,*.hpp,*.h set omnifunc=omni#cpp#complete#Ma
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set ttyfast
-set ttyscroll=3
+if has('vim')
+    set ttyscroll=3
+endif
 set lazyredraw
 
 map <Leader>e ;MBEOpen<CR>

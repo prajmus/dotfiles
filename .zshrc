@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -47,12 +50,15 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 # Customize to your needs...
 alias ls='ls --color=auto'
+alias ll='ls -al'
 alias grepr='grep -rni'
 alias poweroff='sudo shutdown -h now'
 alias reboot='sudo shutdown -r now'
 alias grepc='grep -rn'
 alias chef='g++ -o a.out --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
-alias v='vim.gtk-py2'
+alias v='nvim'
+alias vv='vim'
+alias pyv='source bin/activate'
 alias cell='cd ~/Cellepathy/gerrit'
 alias tmux='tmux -2'
 unalias gbs
@@ -62,8 +68,8 @@ alias f='fg'
 alias vmi='vim'
 alias gfx_off='sudo tee /proc/acpi/bbswitch <<<OFF'
 alias gfx_on='sudo tee /proc/acpi/bbswitch <<<ON'
+alias virt='source bin/activate'
+hash -d chome=/mnt/c/Users/Jakub/
 setopt no_sharehistory
 bindkey -M viins 'jk' vi-cmd-mode
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/qt/5.1.1/gcc_64/bin/:/usr/local/java/bin:/home/prajmus/.local/bin:/home/prajmus/Downloads/gradle/bin
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.4/site-packages/
-export PYTHONPATH=$PYTHONPATH:/home/prajmus/.local/lib/python2.7/site-packages/

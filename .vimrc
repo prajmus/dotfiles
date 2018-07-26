@@ -40,8 +40,10 @@ elseif has('nvim')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vim-scripts/indentpython.vim'
     Plug 'airblade/vim-gitgutter'
+    Plug 'ctrlpvim/ctrlp.vim'
     call plug#end()
     set rtp+=~/.local/share/nvim/plugged/deoplete.nvim
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
@@ -227,6 +229,15 @@ set novisualbell
 
 command! Fjson %!python -m json.tool
 
-set wildignore+=*.pyc
+set wildignore+=*.pyc,*/\.git/*
 
 let g:molokai_original = 1
+
+let g:ale_list_window_size = 3
+
+let g:netrw_list_hide = '.*\.pyc,^\.git/$,^\.idea/$,^\.scannerwork/$,^bin/$,^include/$,^local/$,^lib/$,^man/$,$nginx/$,^\./$,^cover/$,^__pycache__/$'
+
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif

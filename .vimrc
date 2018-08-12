@@ -219,7 +219,7 @@ map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
 
-colorscheme molokai
+colorscheme peachpuff
 set background=dark
 
 let python_highlight_all=1

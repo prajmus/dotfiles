@@ -194,6 +194,11 @@ font xft:Helvetica Neue Light 20
 # lockscreen
 bindsym $mod+Shift+x "exec i3lock"
 
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -5
+
 # wallpaper
 exec --no-startup-id /usr/bin/feh --bg-fill /home/prajmus/wallpaper.png
 

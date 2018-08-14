@@ -57,6 +57,7 @@ alias reboot='sudo shutdown -r now'
 alias grepc='grep -rn'
 alias chef='g++ -o a.out --std=c++11 -pipe -O2 -lm -s -fomit-frame-pointer'
 alias v='nvim'
+alias vim="nvim"
 alias vv='vim'
 alias pyv='source bin/activate'
 alias cell='cd ~/Cellepathy/gerrit'

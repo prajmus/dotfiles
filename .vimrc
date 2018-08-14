@@ -41,6 +41,8 @@ elseif has('nvim')
     Plug 'vim-scripts/indentpython.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'haishanh/night-owl.vim'
     call plug#end()
     set rtp+=~/.local/share/nvim/plugged/deoplete.nvim
 
@@ -219,8 +221,8 @@ map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
 
-colorscheme peachpuff
 set background=dark
+colorscheme night-owl
 
 let python_highlight_all=1
 

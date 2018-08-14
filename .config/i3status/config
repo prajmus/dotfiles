@@ -16,6 +16,7 @@ general {
     interval = 2
 }
 
+order += "volume master"
 order += "load"
 order += "cpu_usage"
 order += "cpu_temperature 0"
@@ -30,6 +31,11 @@ load {
 #   format = " Δ: %1min "
     # termsyn font
     format = " Î %1min"
+}
+
+volume master {
+    format = "%volume"
+    device = "default"
 }
 
 battery 1 {

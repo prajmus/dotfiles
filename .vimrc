@@ -32,7 +32,7 @@ elseif has('nvim')
     Plug 'zchee/deoplete-jedi'
     Plug 'w0rp/ale'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'hdima/python-syntax'
+    Plug 'kh3phr3n/python-syntax'
     Plug 'nvie/vim-flake8'
     Plug 'myusuf3/numbers.vim'
     Plug 'bling/vim-airline'
@@ -42,7 +42,10 @@ elseif has('nvim')
     Plug 'airblade/vim-gitgutter'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'plasticboy/vim-markdown'
-    Plug 'haishanh/night-owl.vim'
+    Plug 'prajmus/night-owl.vim'
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-notes'
+    Plug 'chr4/nginx.vim'
     call plug#end()
     set rtp+=~/.local/share/nvim/plugged/deoplete.nvim
 
@@ -109,10 +112,9 @@ let g:airline#extensions#branch#enabled = 1
 " syntastic
 let g:syntastic_cpp_checkers = ['cppcheck']
 let g:syntastic_check_on_open = 1
-let g:syntastic_python_checkers = ["pep8", "pylint", "python"]
+let g:syntastic_python_checkers = ["pycodestyle", "pylint"]
 let g:syntastic_python_pylint_exe = 'python -m pylint'
 let g:syntastic_python_pylint_args = '--rcfile=/home/prajmus/.pylintrc'
-let g:syntastic_python_pep8_args = '--max-line-length=100'
 
 let mapleader=","
 
@@ -235,6 +237,7 @@ set wildignore+=*.pyc,*/\.git/*
 
 let g:molokai_original = 1
 
+let g:ale_linters = {'python': ['pylint', 'pycodestyle']}
 let g:ale_list_window_size = 3
 
 let g:netrw_list_hide = '.*\.pyc,^\.git/$,^\.idea/$,^\.scannerwork/$,^bin/$,^include/$,^local/$,^lib/$,^man/$,$nginx/$,^\./$,^cover/$,^__pycache__/$'

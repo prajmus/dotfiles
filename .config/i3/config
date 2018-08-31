@@ -194,6 +194,8 @@ client.urgent           $urgent_bg_color    $urgent_bg_color    $text_color     
 hide_edge_borders both
 focus_follows_mouse no
 focus_wrapping no
+floating_minimum_size 300x100
+floating_maximum_size 2600x1800
 
 font xft:Helvetica Neue Light 10
 
@@ -208,8 +210,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -5
 # wallpaper
 exec --no-startup-id /usr/bin/feh --bg-fill /home/prajmus/wallpaper.png
 
+exec --no-startup-id "setxkbmap -layout pl -option ctrl:nocaps"
+
 exec google-chrome-stable
 exec slack
-exec spotify --force-device-scale-factor=2
-exec setxkbmap -option ctrl:nocaps
-exec setxkbmap pl
+exec --no-startup-id "sh -c 'sleep 15; exec spotify --force-device-scale-factor=2'"

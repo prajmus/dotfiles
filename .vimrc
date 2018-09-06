@@ -109,12 +109,6 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
 let g:airline#extensions#branch#enabled = 1
 
-" syntastic
-let g:syntastic_cpp_checkers = ['cppcheck']
-let g:syntastic_check_on_open = 1
-let g:syntastic_python_checkers = ["pycodestyle", "pylint"]
-let g:syntastic_python_pylint_exe = 'python -m pylint'
-let g:syntastic_python_pylint_args = '--rcfile=/home/prajmus/.pylintrc'
 
 let mapleader=","
 
@@ -143,8 +137,6 @@ endfunction
 
 set number
 set smarttab
-
-map <Leader>o ;NERDTreeToggle<CR>
 
 nmap <F2> ;w<CR>
 imap <F2> <ESC>;w<CR>a
@@ -217,11 +209,10 @@ if has('vim')
 endif
 set lazyredraw
 
-map <Leader>e ;MBEOpen<CR>
-map <Leader>c ;MBEClose<CR>
-map <Leader>t ;MBEToggle<CR>
 noremap <C-Tab> ;MBEbn<CR>
 noremap <C-S-Tab> ;MBEbp<CR>
+
+map <Leader>g ;GitGutterLineHighlightsToggle<CR>
 
 set background=dark
 colorscheme night-owl
@@ -243,6 +234,7 @@ let g:ale_list_window_size = 3
 let g:netrw_list_hide = '.*\.pyc,^\.git/$,^\.idea/$,^\.scannerwork/$,^bin/$,^include/$,^local/$,^lib/$,^man/$,$nginx/$,^\./$,^cover/$,^__pycache__/$'
 
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_custom_ignore = '\v[\/](venv|bin|target|dist)|(\.(swp|ico|git|svn))$'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif

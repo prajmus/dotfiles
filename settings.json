@@ -1,0 +1,70 @@
+{
+    "editor.fontFamily": "'Hack Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.wordWrapColumn": 100,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.sonarlint": true,
+        "**/.vscode": true,
+        "**/venv": true
+    },
+    "editor.fontSize": 12,
+    "vim.enableNeovim": true,
+    "vim.leader": ",",
+    "vim.textwidth": 100,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": [":"],
+        "after": [";"]
+    },
+    {
+        "before": [";"],
+        "after": [":"]
+    },
+    ],
+    "vim.insertModeKeyBindings": [
+    {
+        "before": ["j", "k"],
+        "after": ["<ESC>"]
+    }
+    ],
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Tomorrow Night Eighties",
+    "jshint.options": {
+        "esversion": 6
+    },
+    "window.zoomLevel": 0,
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "sonarlint.ls.javaHome": "/usr/lib/jvm/java-8-jre/jre/",
+    "editor.rulers": [
+        100
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["-S", "--line-length", "100"],
+    "python.formatting.yapfArgs": [
+        "--style={based_on_style: facebook, column_limit: 100}"
+    ],
+    "python.sortImports.args": [
+        "-ns", "__init__.py", "-l", "100"
+    ],
+    "cSpell.userWords": [
+        "alexa",
+        "com",
+        "deviat",
+        "nvector",
+        "opti",
+        "pref",
+        "prefered",
+        "prox",
+        "thres",
+        "ying"
+    ],
+    "editor.minimap.maxColumn": 100,
+    "vim.useCtrlKeys": false,
+    "search.smartCase": true,
+    "breadcrumbs.enabled": true,
+}
